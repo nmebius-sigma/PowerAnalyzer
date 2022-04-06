@@ -4,7 +4,7 @@
 #include <AnalyzerHelpers.h>
 
 PowerSimulationDataGenerator::PowerSimulationDataGenerator()
-:	mSerialText( "My first analyzer, woo hoo!" ),
+:	mSerialText( "Power data generator" ),
 	mStringIndex( 0 )
 {
 }
