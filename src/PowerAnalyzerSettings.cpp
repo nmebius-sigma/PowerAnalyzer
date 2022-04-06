@@ -1,13 +1,13 @@
-#include "SimpleSerialAnalyzerSettings.h"
+#include "PowerAnalyzerSettings.h"
 #include <AnalyzerHelpers.h>
 
 
-SimpleSerialAnalyzerSettings::SimpleSerialAnalyzerSettings()
+PowerAnalyzerSettings::PowerAnalyzerSettings()
 :	mInputChannel( UNDEFINED_CHANNEL ),
 	mBitRate( 9600 )
 {
 	mInputChannelInterface.reset( new AnalyzerSettingInterfaceChannel() );
-	mInputChannelInterface->SetTitleAndTooltip( "Serial", "Standard Simple Serial" );
+	mInputChannelInterface->SetTitleAndTooltip( "Serial", "Standard Power Calculations" );
 	mInputChannelInterface->SetChannel( mInputChannel );
 
 	mBitRateInterface.reset( new AnalyzerSettingInterfaceInteger() );
@@ -27,28 +27,28 @@ SimpleSerialAnalyzerSettings::SimpleSerialAnalyzerSettings()
 	AddChannel( mInputChannel, "Serial", false );
 }
 
-SimpleSerialAnalyzerSettings::~SimpleSerialAnalyzerSettings()
+PowerAnalyzerSettings::~PowerAnalyzerSettings()
 {
 }
 
-bool SimpleSerialAnalyzerSettings::SetSettingsFromInterfaces()
+bool PowerAnalyzerSettings::SetSettingsFromInterfaces()
 {
 	mInputChannel = mInputChannelInterface->GetChannel();
 	mBitRate = mBitRateInterface->GetInteger();
 
 	ClearChannels();
-	AddChannel( mInputChannel, "Simple Serial", true );
+	AddChannel( mInputChannel, "Power Calculations", true );
 
 	return true;
 }
 
-void SimpleSerialAnalyzerSettings::UpdateInterfacesFromSettings()
+void PowerAnalyzerSettings::UpdateInterfacesFromSettings()
 {
 	mInputChannelInterface->SetChannel( mInputChannel );
 	mBitRateInterface->SetInteger( mBitRate );
 }
 
-void SimpleSerialAnalyzerSettings::LoadSettings( const char* settings )
+void PowerAnalyzerSettings::LoadSettings( const char* settings )
 {
 	SimpleArchive text_archive;
 	text_archive.SetString( settings );
@@ -57,12 +57,12 @@ void SimpleSerialAnalyzerSettings::LoadSettings( const char* settings )
 	text_archive >> mBitRate;
 
 	ClearChannels();
-	AddChannel( mInputChannel, "Simple Serial", true );
+	AddChannel( mInputChannel, "Power Calculations", true );
 
 	UpdateInterfacesFromSettings();
 }
 
-const char* SimpleSerialAnalyzerSettings::SaveSettings()
+const char* PowerAnalyzerSettings::SaveSettings()
 {
 	SimpleArchive text_archive;
 

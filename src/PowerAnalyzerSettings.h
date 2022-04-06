@@ -1,14 +1,14 @@
-#ifndef SIMPLESERIAL_ANALYZER_SETTINGS
-#define SIMPLESERIAL_ANALYZER_SETTINGS
+#ifndef POWER_ANALYZER_SETTINGS
+#define POWER_ANALYZER_SETTINGS
 
 #include <AnalyzerSettings.h>
 #include <AnalyzerTypes.h>
 
-class SimpleSerialAnalyzerSettings : public AnalyzerSettings
+class PowerAnalyzerSettings : public AnalyzerSettings
 {
 public:
-	SimpleSerialAnalyzerSettings();
-	virtual ~SimpleSerialAnalyzerSettings();
+	PowerAnalyzerSettings();
+	virtual ~PowerAnalyzerSettings();
 
 	virtual bool SetSettingsFromInterfaces();
 	void UpdateInterfacesFromSettings();
@@ -24,4 +24,4 @@ protected:
 	std::auto_ptr< AnalyzerSettingInterfaceInteger >	mBitRateInterface;
 };
 
-#endif //SIMPLESERIAL_ANALYZER_SETTINGS
+#endif //POWER_ANALYZER_SETTINGS
